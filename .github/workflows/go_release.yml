@@ -20,7 +20,7 @@ jobs:
     - name: Build
       run: make build
     - name: Pack output
-      run: zip watchdog_linux.zip ./cmd/watchdog/watchdog
+      run: zip -j watchdog_linux.zip ./cmd/watchdog/watchdog
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
