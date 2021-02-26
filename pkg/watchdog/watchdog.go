@@ -53,6 +53,10 @@ func (w *Watchdog) Run() {
 	if len(execmd) <= 0 {
 		w.logger.Panic("you must set the env WATCHDOG_RUN_PATH")
 	}
+	_, err := os.Stat(execmd[0])
+	if err != nil {
+		w.logger.Panic(err.Error())
+	}
 	cmd := exec.Command(execmd[0], execmd[1:]...)
 	if cmd.Start() != nil {
 		w.logger.Panic("we start the server error")
